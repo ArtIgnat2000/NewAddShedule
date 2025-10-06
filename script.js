@@ -12,6 +12,17 @@ function showDay(day) {
     // Показываем выбранное расписание
     const scheduleElement = document.getElementById(day);
     scheduleElement.classList.add('show');
+
+    // Get all table cells in the schedule
+    const cells = document.querySelectorAll('.schedule table td');
+
+    // Loop through each cell and capitalize the first letter
+    cells.forEach(cell => {
+        const text = cell.textContent;
+        const capitalizedText = text.replace(/^\w/, c => c.toUpperCase())
+                                     .replace(/\b\w/g, c => c.toUpperCase());
+        cell.textContent = capitalizedText;
+    });
 }
 
 function removeClassFromElements(selector, className) {
